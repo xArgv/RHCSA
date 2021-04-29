@@ -1,0 +1,84 @@
+06. Managing Users and Groups
+
+	When adding new users that are going to be part of a new group its better to create the groups first!
+	
+	6.3 Creating Users with useradd
+		
+		useradd - add new user
+			
+			-c - adds a comment for the user
+			-e - experi date for the account
+			-g - specify the primary group (not necessery on rhel/centos system)
+			-G - specify a secondary group
+			-s - specify the login shell
+			
+			wheel is the sudo user group
+			
+		usermod - modify user accounts
+		userdel - deletes a user
+		id - shows information about an user
+		passwd - set user password
+		
+	6.4 Creating Groups with groupadd
+		
+		groupadd - add new group
+		
+	6.5 Managing User and Group Properties
+		
+		w - displays logged users
+		who - displays a shorter version of w
+		getent passwd [username] -  displays info about a user
+		
+		usermod - modifies user account properties
+			
+			-G - new list of secondary groups (removes the old groups)
+			-a - append the new secondary groups to the old groups
+				
+				usermod -aG sales bob - this will add bob to the sales group without removing any other secondary groups
+			
+		userdel - deletes a user
+		groupdel - deletes a group
+	
+	6.6 Configuring Defaults for New Users
+		
+		useradd -D - display or modify default useradd cofiguration stored in /etc/default/useradd
+		/etc/login.defs - is the default configuration file
+		/etc/skel - contains files that are copying to /home for new users
+		
+	6.7 Managing Password Properties
+		
+		passwd [option] <accountName> - manage user account password
+			
+			-l - locks the account
+			-u - unlocks the account
+			-e - expires a password (user must set new password when they login)
+			
+			--stdin - set new password from standart input
+				
+				for i in merry miya ariana nicki; do echo changeyourpassword | sudo passwd --stdin $i; done
+				
+		chage - change user password expiry info
+		
+	6.8 Understanding User and Group Configuration Files
+		
+		/etc/passwd - contains user account information
+		/etc/shadow - contains user password info
+		/etc/group - contains all groups
+		/etc/gshadow - legacy file for group passwords, not used anymore
+		
+		vipw - edits /etc/passwd in a temp file
+		vipw -s - edits /etc/shadow in a temp file
+		vigr - edits /etc/groups in a temp file
+			
+			those commands are useful because someone else may be adding/removing users and groups which will modify the configuration files and will make a conflict
+			
+	6.9 Managing Current Sessions
+		
+		w - displays logged users
+		who - displays a shorter version of w
+		
+		loginctl - allows for current session management
+			
+			list-sessions - displays all open sessions
+			session-status <id> - shows session status
+			kill-sessions <id> - kills session

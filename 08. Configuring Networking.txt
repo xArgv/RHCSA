@@ -1,0 +1,52 @@
+08. Configuring Networking
+	
+	8.1 Understanding IPv4 Networking
+		
+		In IPv4, each node needs its own IP address, writen in dotted decimal notation (192.168.4.200/24)
+		Each IP address must be indicated with the subnet mask behind it
+		The default router or gateway specifies which server to forward packets to that have an external destination
+		The DNS nameserver is the IP address of a server that helps resolving names to IP adresses and the other way around
+	
+	8.2 Understanding NIC Naming
+		
+		IP address configuration needs to be connected to a specific network device
+		Use ip link show to see current devices, and ip addr show to check their configuration
+		Every system has an lo device, which is for internal networking
+		Apart from that, you'll see the name of the real network device, which is presented as a BIOS name
+		
+		Classical naming is using device names like eth0, eth1 and so on
+			
+			These device names don't reveal any information about physical device location
+		
+		BIOS naming is based on hardware properties to give more specific information in the device name
+			
+			em[1-N] for embedded NICs
+			eno[nn] for embedded NICs
+			p<slot>p<port> for NICs on the PCI bus
+		
+		If the driver doesn't reveal netwowrk device properties, classical naming is used
+	
+	8.3 Managing Runtime Configuration with ip
+		
+		The ip tool can be used to manage all aspects of IP networking
+		It replaces the legacy ifconfig tool, do NOT use ifconfig anymore
+		Use ip addr to manage address properties
+		Use ip link to show link properties
+	
+	8.5 Managing Persistent Networking with nmcli
+		
+		An nmcli connection is a configuration that is added to a network device
+		Connections are stored in configuration files
+		The NetworkManager service must be running to manage these files
+	
+	8.7 Verifying Network Configuration Files
+	
+		/etc/sysconfig/network-scripts/ - network configuration files 
+		
+	8.8 Testing Network Connections
+		
+		ping - is used to test connectivity
+		ip addr show - shows current network configuration
+		ip route show - shows current routing table
+		dig - can test DNS servers
+		 

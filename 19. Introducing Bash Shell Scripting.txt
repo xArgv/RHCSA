@@ -1,0 +1,11 @@
+19. Introducing Bash Shell Scripting
+	
+	Conditional statements:
+		
+		if .. then .. fi
+		while .. do .. done
+		until .. do .. done
+		case .. in .. esac
+		for .. in .. do .. done
+	
+	

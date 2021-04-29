@@ -1,0 +1,36 @@
+11. Working with Systemd
+		
+	11.1 Understanding Systemd
+		
+		Systemd is the manager of everything
+		It's the first thing that starts after the kernel
+		It starts porcesses and manages mounts, timers, paths and much more
+		It is event driven, whch means that it can react to specific events
+		The items that are managed by systemd are called units
+		Default units are in /usr/lib/systemd/system, custom units are in /etc/systemd
+		systemctl is the management interface to work with Systemd
+	
+	11.2 Managing Systemd Services
+		
+		systemctl -t help - shows unit types
+		systemctl list-unit-files - lists all installed units and their status
+		systemctl list-units - lists active units
+		systemctl start [name of service] - starts a service
+		systemctl enable [name of service] - enables a service to be started on boot
+		systemctl disable [name of service] - disables a service from starting on boot
+		systemctl stop [name of service] - stops a service
+		systemctl status [name of service] - gives information about a service
+	
+	11.3 Modifying Systemd Service Configuration
+		
+		Default system-provided unit files are in /usr/lib/systemd/system - don't touch them
+		Custom unit files are in /etc/systemd/system
+		Run-time automatically generated unit files are in /run/systemd
+		
+		systemctl cat [name of service] - shows the configuration of the unit
+		systemctl show [name of service] - shows all available configurations for this unit
+		systemctl edit [name of sercice] - allows you to edit service configuration
+		systemctl deaemon-reload - use after modifying service configuration to reload the unit configuration
+		systemctl restart [name of service] - use after modifying service configuration
+	
+	

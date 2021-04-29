@@ -1,0 +1,47 @@
+20. Managing SSH
+	
+	20.2 Setting up SSH-Key based login
+		
+		ssh-keygen - creates a public/private key pair for the current user
+		ssh-copy-id - copies the public key	over to the target server
+		ssh-agent /bin/bash - allocate space in the bash shell to cache the private key passphrase
+		ssh-add - adds the current passphrase to the cache
+	 
+	20.3 Chaning common SSH Server options
+		
+		server options are set in /etc/ssh/sshd_config
+		client options can be set in /etc/ssh/ssh_config
+		
+		port 22 - set the sshd port, must configure SElinux to allow the new port
+		PermitRootLogin - considered to be a security issue, keep it off
+		PubkeyAuthentication - allow key authentication
+		PasswordAuthentication - allow password authentication
+		X11Forwarding - allow grarphical screen
+		
+	20.4 Securely copying files
+		
+		scp can be used to securely copy files over the network, usingg the sshd process
+			
+			scp file1 file2 student@remoteserver:/home/student
+			scp -r root@remoteserver:/tmp/files .
+		
+		sftp offers an FTP client interface to securely transfer files using SSH
+			
+			put /my/file - to upload a file
+			get /your/file - to download a file
+			exit - close an sftp session
+			
+	20.5 Securely Synchronizing files
+		
+		rsync - using SSH to synchronize files
+			
+			if source and target already exist, rsync will only sync their differences
+			
+			-r - will recursively sync the entire directory tree
+			-l - sync symbolic links
+			-p - preserves symolic lins
+			-n - will do a dry run before actually synchronizing
+			-a - uses archive mode, which is equivalent to -rlptgoD
+			-A - uses archive mode and also synchronizes ACLs
+			-X - will synchronize SELinux contect as well
+			

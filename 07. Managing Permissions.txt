@@ -1,0 +1,55 @@
+07. Managing Permissions
+	
+	7.2 Changing File Ownership
+		
+		chown user:group - change ownership of files
+	
+	7.3 Understanding Basic Permissions
+	
+		|------------------------------------------------------------------------------|
+		|      Permission         |          Files          |       Directories        |
+		|-------------------------|-------------------------|--------------------------|
+		|       (4) Read          |           read          |     list the content     |
+		|       (2) Write         |          modify         |   delete/create files    |
+		|       (1) Execute       |       rund the file     |   cd into the directory  |
+		|-------------------------|-------------------------|--------------------------|
+
+	7.4 Managing Basic Permissions
+	
+		chmod - manage permisions
+		chmod 750 file - absolute mode, where first number is USER, second is GROUP, third is OTHERS
+		chmod o+x = relative mode, this will add execute permissions to OTHERS
+	
+	7.5 Understanding umask
+		
+		The umask is a shell setting that defines a mask that will be subtracted from the default permssions
+		Default permissions on directories are 777
+		Default permissions on files are 666
+	
+	7.6 Understanding Special Permissions
+	
+		|------------------------------------------------------------------------------|
+		|    	     ID   	      |          File           |        Directory         |
+		|-------------------------|-------------------------|--------------------------|
+		|        SUID = 4         |       runs as owner     |       ------------       |
+		|        SGID = 2         |    run as group woner   |inherit directory g owner |
+		|       sticky = 1        |       ------------      |   delete only if owner   |
+		|-------------------------|-------------------------|--------------------------|
+	
+	7.7 Managing Special Permissions
+		
+		SUID = chmod 4770 file or chmod u+s file
+		SGID = chmod 2770 file or chmod g+s file
+		Sticky bit - chmod 1770 directory or chmod +t directory
+	
+	7.8 Understanding ACLs
+		
+		ACLs are used to grant permissions to additional users and groups
+		The normal ACL applies to existing files only
+		Use a default ACL on a directory if you want it to apply to new files only
+		getfacl - shows current settings
+		setfacl - set ACLs
+	
+	7.9 Managing ACLs
+		
+		

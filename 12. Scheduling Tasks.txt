@@ -1,0 +1,45 @@
+12. Scheduling Tasks
+	
+	12.1 Understanding cron and at
+		
+		cron: the classic solution, allows you to schedule re-accurring tasks
+			
+			uses the crond deamon
+			use crontab -e to edit tasks
+		
+		at: for tasks that need to run only once
+			
+			uses the atd deamon
+			uses at to schedule the tasks
+		
+		systemd timers: the newer alternative to cron jobs
+			
+			create a .timer unit and run it using systemctl
+	
+	12.2 Understanding cron Scheduling Options
+		
+		crontab -e - create user-specific crong jobs
+		/etc/cron.d - generic time-specific cron jobs
+		/etc/cron.{hourly/daily/weekly/monthly} - scripts, executed on an hourly, daily, weeklly, monthly basis
+	
+	12.3 Understanding anacron
+		
+		Anacron is a service behind cron that takes care jobs are executed on a regular basis, but not at a specific time
+		It takes care of the jobs in /etc/cron.{hourly/daily/weekly/monthly}
+		Configuration is in /etc/anacrontab
+	
+	12.4 Scheduling with cron
+		
+		|----------------- minute (0 - 59), or * (no specific value)
+		| |------------------ hour (0 - 23), or * for any value
+	    | | |------------------ day of month (1 - 31), or * (no specific value)
+		| | | |------------------ month (1 - 12), or * (no specific value)
+		| | | | |------------------ Day of the week (0 - 7) (0 and 7 both represent Sunday), or * (no specific value)
+		| | | | |
+		| | | | |
+		| | | | |
+		* * * * * - cron jobs time format
+		
+		*/5 * * * * <command> - this will execute the command every 5 minutes
+		5 * * * * <command> - this will execute the command every hour on the 5th minute
+	

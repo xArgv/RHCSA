@@ -1,0 +1,13 @@
+04. Working with Text Files
+	
+	4.1 Using Common Text Tools
+		
+		less - file pager
+		head - shows the first 10 lines of a file
+		tail - shows the last 10 lines of a file
+		cat - shows the content of a text file
+		tac - does the same but in reverse order
+		sort - sorts output
+		sort -n - sorts numerical output
+	
+		

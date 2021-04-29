@@ -1,0 +1,19 @@
+18. Essential Troubleshooting Skills
+	
+	18.2 Changing the Root Password
+		
+		add rd.break at the line that loads the linux kernel in grub2 menu
+		mount -o remount,rw /sysroot - to mount sysroot writible
+		chroot /sysroot
+		passwd root
+		touch .autorelabel
+		
+	18.3 Troubleshooting Filesystem Issues
+		
+		mount -a - mounts all entries in /etc/fstab
+		
+	18.4 Troubleshooting Networking Issues
+		
+		nmtui - edit network settings
+	
+	

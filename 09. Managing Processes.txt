@@ -1,0 +1,63 @@
+09. Managing Processes
+	
+	9.1 Understanding Processes
+		
+		init is the top process that have pid 1 in linux thats systemd, all other processes are children of systemd
+			
+		    systemd
+				├─── sshd
+					 ├─── bash
+						  ├─── top
+					  
+		
+		If the parent process is killed the children will die too
+		Threed is a process within the process, which means that a process can have one pid but can run multiple taks at the same time, also called multy threded proccess
+	
+	9.2 Managing Shell Jobs
+		
+		command & - starts a command in the background
+		Ctrl + Z - pause a job
+		bg - resumes a job 
+		jobs - shows all jobs in the background
+		fg [job number] - brings a job to the foreground
+	
+	9.3 Getting Process Information with ps
+		
+		ps aux - shows running processes
+		ps ef - shows pid of parent process
+		ps fax - shows tree of child processes
+		watch uptime - uptime will show the load average of the CPU, watch will repeat the command every 2 seconds
+	
+	9.6 Monitoring System Activity with top
+		
+		top - a dashboard that allows you to monitor current system activity
+		
+			f - show and select from available display fields
+			M - filter the memory usage
+			W - save new display settings
+			k - allows you to send a signal to a process
+			r - renice a process
+			
+	9.7 Sending Signals to Processes
+		
+		kill -[signal] [pid] - send kill signal to a process
+		
+			9 - kill the process
+			15 - send a terminate signal
+			
+		killall [process name] - kill all process with a specific name
+	
+	9.8 Managing Priorities and Niceness
+		
+		Nice values range from -20 up to 19, the lower the value the more CPU usage
+		
+		renice -n [niceness level] [pid] - changes the niceness level of a process
+		nice -n [niceness level] [commands] - starts a process with a specific niceness level
+	
+	9.9 Using Tuned Profiles
+		
+		tuned - service that allows for a performance optimization in an easy way
+		tuned-adm list - show a list of profiles
+		tuned-adm profile <name> - will set a prifle
+		tunead-adm active - will show the current profile
+		

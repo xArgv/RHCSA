@@ -1,0 +1,59 @@
+02. Using Essential Tools
+	
+	2.1 Getting Started with Linux Commands
+		
+		pwd - prints working directory
+		whoami - shows currently logged user
+		ls - lists files
+		ip addr show - shows the ip
+		free -m - shows free memory in mb
+		df -h - shows storage devices
+		cat - shows the content of a file
+		findmnt - will show all mounted file system
+	
+	2.3 Understanding I/O Redirection and Piping
+		
+		Redirection uses STDIN, STDERR and STDOUT to work with command input and output in a flexible way
+		
+		> - redirects the output to a file
+		>> - appends the output to a file
+		2> - redirects only the error messages
+		< - redirects the standart input
+		
+		In piping, the STDOUT of the first command is used as STDIN for the second command
+		
+	2.6 Using man
+		
+		section 1 - commands run by normal users
+		section 5 - configuration files
+		section 8 - room commands
+		
+		Synopsis:
+			
+			bold text - type exactly as shown
+			italic text - mandatory argument
+			[] - optional argument
+			... - repeatable
+			a|b - a and b cannot be used together
+	
+	2.7 Finding the right man page
+		
+		All man pages are indexed in the mandb
+		use man -k or apropos to search the mandb
+	
+	2.9 Using vim
+		
+		i - insert mode
+		o - insert mode on a new line
+		dd - delete a line
+		yy - copy the curent line 
+		p - paste the line
+		gg - go to the first line
+		G - go to the last line
+		v - visual mode
+		/ - search for text
+		? - search for text upwards
+		n - next matching string in search mode
+		^ - move the cursor to the beggining to the line
+		$ - move the curser to the end of the  line
+		

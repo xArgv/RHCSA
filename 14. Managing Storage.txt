@@ -1,0 +1,62 @@
+14. Managing Storage
+
+	lsblk - list storage devices
+	lsof - list open files
+	findmnt - shows all fyle system
+	
+	14.4 Creating Partitions with parted
+		
+		While creating a partition, you don NOT automatically create a file system
+		
+		parted /dev/sdb - to create new partition in /dev/sdb
+			
+			print - will show if there is current partition table
+			mklabel msdos|gpt - to create MBR or GPT partition
+			
+			mkpart part-type name fs-type start end
+				
+				part-type - applies to MBR only and sets primary, logical, or extended partition 
+				name - arbitrary name, required for GPT
+				fs-type - does NOT modify the filesystem, but sest some irrelevant file system dependent metadata
+				start end - specify start and end, counting from the beginning of the disk
+				
+				example - mkpart primary 1024MiB 2048MiB
+			
+			Alternatively, use mkpart in interactive mode
+			
+			print - to verify that the partition was created
+			quit - to exit the parted shell
+			udevadm settle - to ensure that the new partition device is created
+		
+	14.7 Making and Mounting File Systems
+		
+		mkfs.<fileSystem> /dev/<device> -  to create a file system on a device
+		
+		/mnt is the directory used for temoprary mounts
+		
+		mount /dev/<device> /mnt - will mount the device on /mnt
+		umount <mount location> - unmounts a device
+	
+	14.8 Mounting Partitions through /etc/fstab
+		
+		/etc/fstab - is the main configuration file to persistently mount partitions
+		systemctl deamon-reload - after editing /etc/fstab to update systemd
+	
+	14.9 Managing Persistent Naming Attributes
+		
+		tune2fs -L <name> /dev/<device> - set a lable for a device name
+		xfs_admin -L <name> /dev/<device> - set a lable for xfs file systems
+		blkid - check block id and labels
+	
+	14.11 Managing XFS File Systems	
+		
+		xfsdump - create a backup of an xfs device
+		xfsrestore - restore a backup of an xfs device
+		xfsrepair - repair broken xfs file systems
+	
+	14.12 Creating a Swap Partition
+		
+		In parted set linix-swawp as the file system
+		mkswap /dev/<device> - to create the swap file system
+		swapon /dev/<device> - to activate the swap partition
+		

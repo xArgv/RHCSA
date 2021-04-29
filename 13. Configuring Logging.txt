@@ -1,0 +1,28 @@
+13. Configuring Logging
+	
+	13.2 Configuring Rsyslog Logging
+		
+		/etc/rsyslog.conf - the main configuration file for rsyslogd
+		/etc/rsyslog.d/ - snap-in files can be placed in this directory
+		Each logger line contains three items:
+			
+			facility - the specific facility that the log is created for
+			severity - the severity from which should be logged
+			destination - the file or other destination the log should be written to
+		
+		Log files normaly are in /var/log
+		logger - can be used to write to the rsyslog manually
+	
+	13.3 Working with systemd-journald
+		
+		systemd-journald is the log service that is part of systemd
+		systemctl status <unit> - to check unit specific journal
+		Messages are logged also to rsyslogd, using rsyslogd imjournal module
+		To make the jurnal persistent, use mkdir /var/log/journal
+	
+	13.4 Working with journalctl
+		
+		journalctl - shows the complete journal
+		journalctl -u [unit] - shows journal about specific unit
+		journalctl --dmesg - shows kernel messages
+		journalctl -u crond --since yesterday --until 9:00 -p info - combined filter can be used aswell

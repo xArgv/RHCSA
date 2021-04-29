@@ -1,0 +1,29 @@
+03. Essential File Management Tools
+	
+	3.1 Essential File Management Tasks
+		
+		ls - list files
+		mkdir - make a new directory
+		cp - copy a file
+		mv - move a file
+		rm - revome files
+	
+	3.2 Finding Files
+		
+		find / -name "name" - search files by name
+		
+	3.5 Working with Links
+		
+		Hard links point to the inode of the file, while soft links point to the hard link of the file
+		
+		ln - create a hard link 
+		ln -s - create a symbolic link
+	
+	3.6 Working with tar
+		
+		tar -cvf archive.tar /home /etc - will create an archive of the home and etc directory
+		tar -xvf archive.tar - extract the archive
+		tar -tvf archive.tar - shows the content of the archive
+		z - will compress the archive using gzip
+		j - will compress the archive using bzip2
+		

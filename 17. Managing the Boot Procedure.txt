@@ -1,0 +1,29 @@
+17. Managing the Boot Procedure
+	
+	17.3 Modifying Grub2 Persistent Parameters
+		
+		To edit persistent Grub2 parameters, edit the configuration file in /etc/default/grub
+		After writing changes compile changes to grub.cfg
+			
+			bios - grub2-mkconfig -o /boot/grub2/grub.cfg
+			efi - grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+		
+	17.4 Managing Systemd Targets
+		
+		A systemd target is a group of unit files
+		Some targets are isolatable, which means that they difine the final state a system is starting in:
+			
+			emergency.target - this is the minimal target that allows troubleshooting
+			rescue.target - also a troubleshooting target but with more services
+			multi-user.target - this is the non graphical target
+			graphical.target - this is the graphical target
+	
+	17.5 Setting the Default Systemd Target
+		
+		systemctl get-default - show the default systemd target
+		systemctl set-default - sets the default systemd target
+		
+	17.6 Booting into a Specific Target
+		
+		On the grub2 boot prompt, use systemctl.unit=xxx.target to boot into a specific target
+		systemctl isolate xxx.target - change between targets on a running system 

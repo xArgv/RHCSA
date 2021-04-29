@@ -1,0 +1,26 @@
+16. Basic Kernel Management
+	
+	16.2 Working with Kernel Modules
+		
+		modprobe - manually load a kernel module
+			-r - unload a module
+		lsmod - list currently loaded kernel modules
+	
+	16.3 Using modprobe
+		
+		modinfo - shows kernel module paratmeters
+		
+		To load specific kernel module parameters edit /etc/modprobe.conf or the files in /etc/modprobe.d
+		
+	16.4 Using /proc to Tune Kernel Behavior
+		
+		/proc is a file system that provides access to kernel information
+			
+			- PID directories
+			- Status files
+			- Tunable in /proc/sys
+		
+		Use echo to write a value to any file in /proc/sys to change kernel performence parameters
+		Write the parameters to /etc/sysctl.conf to make them persistent
+		
+		sysctl -a - shows a list of all current settings
