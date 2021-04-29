@@ -11,7 +11,7 @@
 		|-------------------------|-------------------------|--------------------------|
 		|       (4) Read          |           read          |     list the content     |
 		|       (2) Write         |          modify         |   delete/create files    |
-		|       (1) Execute       |       rund the file     |   cd into the directory  |
+		|       (1) Execute       |       run the file      |   cd into the directory  |
 		|-------------------------|-------------------------|--------------------------|
 
 	7.4 Managing Basic Permissions
@@ -49,7 +49,5 @@
 		Use a default ACL on a directory if you want it to apply to new files only
 		getfacl - shows current settings
 		setfacl - set ACLs
-	
-	7.9 Managing ACLs
 		
 		
