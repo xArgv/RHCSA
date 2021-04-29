@@ -29,7 +29,7 @@
 	7.6 Understanding Special Permissions
 	
 		|------------------------------------------------------------------------------|
-		|    	     ID   	      |          File           |        Directory         |
+		|    	     ID   	  |          File           |        Directory         |
 		|-------------------------|-------------------------|--------------------------|
 		|        SUID = 4         |       runs as owner     |       ------------       |
 		|        SGID = 2         |    run as group woner   |inherit directory g owner |
